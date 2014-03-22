@@ -35,7 +35,7 @@ lcd.backlight(lcd.OFF)
 
 def ShowHome():
     lcd.clear()
-    HandleSettings() # Set back to defaults 
+    lcd.backlight(defaultBacklight) # Set back to default
     lcd.message("RasPi Automation\nPress to cont...")
 
 # commands
@@ -361,20 +361,28 @@ class Folder:
 
 def HandleSettings(node):
     global lcd
+    global defaultBacklight
     if node.getAttribute('lcdColor').lower() == 'red':
         lcd.backlight(lcd.RED)
+        defaultBacklight = lcd.RED
     elif node.getAttribute('lcdColor').lower() == 'green':
         lcd.backlight(lcd.GREEN)
+        defaultBacklight = lcd.GREEN
     elif node.getAttribute('lcdColor').lower() == 'blue':
         lcd.backlight(lcd.BLUE)
+        defaultBacklight = lcd.BLUE
     elif node.getAttribute('lcdColor').lower() == 'yellow':
         lcd.backlight(lcd.YELLOW)
+        defaultBacklight = lcd.YELLOW
     elif node.getAttribute('lcdColor').lower() == 'teal':
         lcd.backlight(lcd.TEAL)
+        defaultBacklight = lcd.TEAL
     elif node.getAttribute('lcdColor').lower() == 'violet':
         lcd.backlight(lcd.VIOLET)
+        defaultBacklight = lcd.VIOLET
     elif node.getAttribute('lcdColor').lower() == 'white':
         lcd.backlight(lcd.ON)
+        defaultBacklight = lcd.ON
     if node.getAttribute('lcdBacklight').lower() == 'on':
         lcd.backlight(lcd.ON)
     elif node.getAttribute('lcdBacklight').lower() == 'off':
@@ -437,7 +445,7 @@ class Display:
         lcd.message(str)
 
     def handleButtonPress(self, button):
-    	HandleSettings() # Turn on LCD with the right color
+        defaultBacklight = lcd.RED
     	self.update(button)
     	self.display()
     	sleep(0.25)
