@@ -1,5 +1,22 @@
 <application>
-  <settings lcdColor="White" lcdBackground="On" />
+  <settings lcdColor="Blue" lcdBackground="Off" />
+  <folder text="Sprinklers">
+    <widget text="Turn All Off" function="SprinklersAllOff" />
+    <widget text="Station 1 On" function="Sprinkler1On" />
+    <widget text="Station 2 On" function="Sprinkler2On" />
+    <widget text="Station 3 On" function="Sprinkler3On" />
+    <widget text="Station 4 On" function="Sprinkler4On" />
+    <widget text="Station 5 On" function="Sprinkler5On" />
+    <widget text="Station 6 On" function="Sprinkler6On" />
+    <widget text="Station 7 On" function="Sprinkler7On" />
+    <widget text="Station 8 On" function="Sprinkler8On" />
+  </folder>
+  <folder text="Garage Doors">
+    <widget text="Toggle Door 1" function="GarageToggle1" />
+    <widget text="Toggle Door 2" function="GarageToggle2" />
+    <widget text="Door 1 Status" function="GarageStatus1" />
+    <widget text="Door 2 Status" function="GarageStatus2" />
+  </folder>
   <folder text="System Info">
     <widget text="Show Date/Time" function="ShowDateTime" />
     <widget text="Set Date/Time" function="SetDateTime" />
