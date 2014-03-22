@@ -35,7 +35,7 @@ lcd.backlight(lcd.OFF)
 
 def ShowHome():
     lcd.clear()
-    lcd.backlight(lcd.BLUE)
+    HandleSettings() # Set back to defaults 
     lcd.message("RasPi Automation\nPress to cont...")
 
 # commands
@@ -437,7 +437,7 @@ class Display:
         lcd.message(str)
 
     def handleButtonPress(self, button):
-    	lcd.backlight(lcd.ON)
+    	HandleSettings() # Turn on LCD with the right color
     	self.update(button)
     	self.display()
     	sleep(0.25)
