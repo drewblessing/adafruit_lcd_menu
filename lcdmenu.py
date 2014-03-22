@@ -441,8 +441,7 @@ class Display:
         if DEBUG:
             print('------------------')
         lcd.home()
-        ShowHome()
-        # lcd.message(str)
+        lcd.message(str)
 
     def handleButtonPress(self, button):
         lcd.backlight(defaultBacklight)
@@ -532,7 +531,7 @@ top = dom.documentElement
 ProcessNode(top, uiItems)
 
 display = Display(uiItems)
-display.display()
+ShowHome()
 
 lastButtonPressed = datetime.now()
 
