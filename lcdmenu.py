@@ -393,11 +393,6 @@ def ProcessNode(currentNode, currentItem):
                 thisCommand = CommandToRun(child.getAttribute('text'), child.firstChild.data)
                 currentItem.items.append(thisCommand)
 
-def handleButtonPress(button):
-	display.update(button)
-	display.display()
-	sleep(0.25)
-
 class Display:
     def __init__(self, folder):
         self.curFolder = folder
@@ -436,6 +431,11 @@ class Display:
         lcd.home()
         lcd.message(str)
 
+    def handleButtonPress(button):
+		display.update(button)
+		display.display()
+		sleep(0.25)
+
     def update(self, command):
         lcd.backlight(lcd.ON)
         if DEBUG:
@@ -450,6 +450,7 @@ class Display:
             self.left()
         elif command == 's':
             self.select()
+
     def up(self):
         if self.curSelectedItem == 0:
             return
@@ -458,6 +459,7 @@ class Display:
         else:
             self.curTopItem -= 1
             self.curSelectedItem -= 1
+
     def down(self):
         if self.curSelectedItem+1 == len(self.curFolder.items):
             return
@@ -466,6 +468,7 @@ class Display:
         else:
             self.curTopItem += 1
             self.curSelectedItem += 1
+
     def left(self):
         if isinstance(self.curFolder.parent, Folder):
             # find the current in the parent
