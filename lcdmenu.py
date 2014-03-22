@@ -393,6 +393,11 @@ def ProcessNode(currentNode, currentItem):
                 thisCommand = CommandToRun(child.getAttribute('text'), child.firstChild.data)
                 currentItem.items.append(thisCommand)
 
+def handleButtonPress(button):
+	display.update(button)
+	display.display()
+	sleep(0.25)
+
 class Display:
     def __init__(self, folder):
         self.curFolder = folder
@@ -526,31 +531,21 @@ while 1:
 
 	if (lcd.buttonPressed(lcd.LEFT)):
 		lastButtonPressed = datetime.now()
-		display.update('l')
-		display.display()
-		sleep(0.25)
+		display.handleButtonPress('l')
 
 	if (lcd.buttonPressed(lcd.UP)):
 		lastButtonPressed = datetime.now()
-		display.update('u')
-		display.display()
-		sleep(0.25)
+		display.handleButtonPress('u')
 
 	if (lcd.buttonPressed(lcd.DOWN)):
 		lastButtonPressed = datetime.now()
-		display.update('d')
-		display.display()
-		sleep(0.25)
+		display.handleButtonPress('d')
 
 	if (lcd.buttonPressed(lcd.RIGHT)):
 		lastButtonPressed = datetime.now()
-		display.update('r')
-		display.display()
-		sleep(0.25)
+		display.handleButtonPress('r')
 
 	if (lcd.buttonPressed(lcd.SELECT)):
 		lastButtonPressed = datetime.now()
-		display.update('s')
-		display.display()
-		sleep(0.25)
+		display.handleButtonPress('s')
 
