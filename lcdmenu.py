@@ -524,7 +524,8 @@ top = dom.documentElement
 ProcessNode(top, uiItems)
 
 display = Display(uiItems)
-display.display()
+#display.display()
+ShowHome()
 
 lastButtonPressed = datetime.now()
 
