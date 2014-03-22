@@ -525,7 +525,7 @@ ProcessNode(top, uiItems)
 
 display = Display(uiItems)
 display.display()
-ShowHome()
+# ShowHome()
 
 lastButtonPressed = datetime.now()
 
