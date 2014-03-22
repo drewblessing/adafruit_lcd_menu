@@ -37,8 +37,6 @@ def ShowHome():
     lcd.clear()
     lcd.backlight(defaultBacklight) # Set back to default
     lcd.message("RasPi Automation\nPress to cont...")
-    while (not(lcd.buttonPressed(lcd.SELECT))) & (not(lcd.buttonPressed(lcd.LEFT))):
-    	continue
 
 # commands
 def DoQuit():
@@ -546,6 +544,8 @@ while 1:
 		ShowHome()
 		lcd.backlight(lcd.OFF)
 		lastButtonPressed = datetime.now()
+    	while (not(lcd.buttonPressed(lcd.SELECT))) & (not(lcd.buttonPressed(lcd.LEFT))):
+    		continue
 
 	if (lcd.buttonPressed(lcd.LEFT)):
 		lastButtonPressed = datetime.now()
