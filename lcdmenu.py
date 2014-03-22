@@ -431,9 +431,9 @@ class Display:
         lcd.home()
         lcd.message(str)
 
-    def handleButtonPress(button):
-		display.update(button)
-		display.display()
+    def handleButtonPress(self, button):
+		self.update(button)
+		self.display()
 		sleep(0.25)
 
     def update(self, command):
