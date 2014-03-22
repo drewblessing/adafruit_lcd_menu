@@ -442,7 +442,6 @@ class Display:
 		sleep(0.25)
 
     def update(self, command):
-        lcd.backlight(lcd.ON)
         if DEBUG:
             print('do',command)
         if command == 'u':
@@ -534,7 +533,7 @@ if DEBUG:
 
 while 1:
 	if ((datetime.now() - lastButtonPressed).total_seconds() >= 30):
-		#ShowHome()
+		ShowHome()
 		lcd.backlight(lcd.OFF)
 		lastButtonPressed = datetime.now()
 
