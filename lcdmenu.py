@@ -383,9 +383,8 @@ def HandleSettings(node):
     elif node.getAttribute('lcdColor').lower() == 'white':
         lcd.backlight(lcd.ON)
         defaultBacklight = lcd.ON
-    if node.getAttribute('lcdBacklight').lower() == 'on':
-        lcd.backlight(lcd.ON)
-    elif node.getAttribute('lcdBacklight').lower() == 'off':
+    # Note: No if 'on' because the above colors already represent an 'on' state.
+    if node.getAttribute('lcdBacklight').lower() == 'off':
         lcd.backlight(lcd.OFF)
 
 def ProcessNode(currentNode, currentItem):
