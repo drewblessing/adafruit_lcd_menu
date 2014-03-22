@@ -519,29 +519,37 @@ if DEBUG:
 	print('start while')
 
 while 1:
-    print(datetime.now - lastButtonPressed)
+	if ((datetime.now() - lastButtonPressed >= 30)):
+		#ShowHome()
+		lcd.backlight(lcd.OFF)
+		lastButtonPressed = datetime.now()
 
 	if (lcd.buttonPressed(lcd.LEFT)):
+		lastButtonPressed = datetime.now()
 		display.update('l')
 		display.display()
 		sleep(0.25)
 
 	if (lcd.buttonPressed(lcd.UP)):
+		lastButtonPressed = datetime.now()
 		display.update('u')
 		display.display()
 		sleep(0.25)
 
 	if (lcd.buttonPressed(lcd.DOWN)):
+		lastButtonPressed = datetime.now()
 		display.update('d')
 		display.display()
 		sleep(0.25)
 
 	if (lcd.buttonPressed(lcd.RIGHT)):
+		lastButtonPressed = datetime.now()
 		display.update('r')
 		display.display()
 		sleep(0.25)
 
 	if (lcd.buttonPressed(lcd.SELECT)):
+		lastButtonPressed = datetime.now()
 		display.update('s')
 		display.display()
 		sleep(0.25)
