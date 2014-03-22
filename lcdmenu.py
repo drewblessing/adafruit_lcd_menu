@@ -439,8 +439,8 @@ class Display:
     def handleButtonPress(self, button):
     	lcd.backlight(lcd.ON)
     	self.update(button)
-		self.display()
-		sleep(0.25)
+    	self.display()
+    	sleep(0.25)
 
     def update(self, command):
         if DEBUG:
