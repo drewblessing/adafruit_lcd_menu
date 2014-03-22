@@ -36,7 +36,7 @@ lcd.backlight(lcd.OFF)
 def ShowHome():
     lcd.clear()
     lcd.backlight(defaultBacklight) # Set back to default
-    lcd.message("RasPi Automation\nPress to cont...")
+    lcd.message("RasPi Automation\nPress Select...")
 
 # commands
 def DoQuit():
