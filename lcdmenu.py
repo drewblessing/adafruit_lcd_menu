@@ -512,10 +512,14 @@ ProcessNode(top, uiItems)
 display = Display(uiItems)
 display.display()
 
+lastButtonPressed = datetime.now
+
 if DEBUG:
 	print('start while')
 
 while 1:
+    print(datetime.now - lastButtonPressed)
+
 	if (lcd.buttonPressed(lcd.LEFT)):
 		display.update('l')
 		display.display()
