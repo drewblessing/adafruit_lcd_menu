@@ -33,6 +33,11 @@ lcd = Adafruit_CharLCDPlate(busnum = 1)
 lcd.begin(DISPLAY_COLS, DISPLAY_ROWS)
 lcd.backlight(lcd.OFF)
 
+def ShowHome():
+    lcd.clear()
+    lcd.backlight(lcd.BLUE)
+    lcd.message("RasPi Home Automation")
+
 # commands
 def DoQuit():
     lcd.clear()
