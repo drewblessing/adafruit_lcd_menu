@@ -513,7 +513,7 @@ ProcessNode(top, uiItems)
 display = Display(uiItems)
 display.display()
 
-lastButtonPressed = datetime.now
+lastButtonPressed = datetime.now()
 
 if DEBUG:
 	print('start while')
