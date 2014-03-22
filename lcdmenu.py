@@ -36,7 +36,7 @@ lcd.backlight(lcd.OFF)
 def ShowHome():
     lcd.clear()
     lcd.backlight(lcd.BLUE)
-    lcd.message("RasPi Home Automation")
+    lcd.message("RasPi Automation\nPress to cont...")
 
 # commands
 def DoQuit():
