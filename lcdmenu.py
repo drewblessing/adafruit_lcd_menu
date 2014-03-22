@@ -519,7 +519,7 @@ if DEBUG:
 	print('start while')
 
 while 1:
-	if ((datetime.now() - lastButtonPressed) >= 30):
+	if ((datetime.now() - lastButtonPressed).total_seconds() >= 30):
 		#ShowHome()
 		lcd.backlight(lcd.OFF)
 		lastButtonPressed = datetime.now()
