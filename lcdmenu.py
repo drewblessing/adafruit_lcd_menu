@@ -534,6 +534,9 @@ display = Display(uiItems)
 display.display()
 ShowHome()
 
+while (not(lcd.buttonPressed(lcd.SELECT))) & (not(lcd.buttonPressed(lcd.LEFT))):
+	continue
+
 lastButtonPressed = datetime.now()
 
 if DEBUG:
