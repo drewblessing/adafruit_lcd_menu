@@ -9,6 +9,7 @@ import commands
 import os
 from string import split
 from time import sleep, strftime, localtime
+from datetime import datetime
 from xml.dom.minidom import *
 from Adafruit_I2C import Adafruit_I2C
 from Adafruit_MCP230xx import Adafruit_MCP230XX
