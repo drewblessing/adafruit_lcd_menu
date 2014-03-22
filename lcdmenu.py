@@ -431,6 +431,7 @@ class Display:
         lcd.message(str)
 
     def update(self, command):
+        lcd.backlight(lcd.ON)
         if DEBUG:
             print('do',command)
         if command == 'u':
