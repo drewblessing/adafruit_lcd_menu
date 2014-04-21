@@ -15,6 +15,8 @@ from Adafruit_I2C import Adafruit_I2C
 from Adafruit_MCP230xx import Adafruit_MCP230XX
 from Adafruit_CharLCDPlate import Adafruit_CharLCDPlate
 from ListSelector import ListSelector
+import RPi.GPIO as GPIO
+import atexit
 
 import smbus
 
@@ -521,6 +523,32 @@ class Display:
                 print('eval', self.curFolder.items[self.curSelectedItem].function)
             eval(self.curFolder.items[self.curSelectedItem].function+'()')
 
+def enableShiftRegisterOutput():
+    GPIO.output(pin_sr_noe, False)
+
+def disableShiftRegisterOutput():
+    GPIO.output(pin_sr_noe, True)
+
+def setShiftRegister(values):
+    GPIO.output(pin_sr_clk, False)
+    GPIO.output(pin_sr_lat, False)
+    for s in range(0,num_stations):
+        GPIO.output(pin_sr_clk, False)
+        GPIO.output(pin_sr_dat, values[num_stations-1-s])
+        GPIO.output(pin_sr_clk, True)
+    GPIO.output(pin_sr_lat, True)
+
+def progexit():
+    global values
+    values = [0]*num_stations
+    setShiftRegister(values)
+    GPIO.cleanup()
+    lcd.clear()
+    lcd.backlight(lcd.OFF)
+
+if __name__ == '__main__':
+    atexit.register(progexit)
+
 # now start things up
 uiItems = Folder('root','')
 
@@ -529,6 +557,17 @@ dom = parse(configfile) # parse an XML file by name
 top = dom.documentElement
 
 ProcessNode(top, uiItems)
+
+# setup GPIO pins to interface with shift register
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(pin_sr_clk, GPIO.OUT)
+GPIO.setup(pin_sr_noe, GPIO.OUT)
+disableShiftRegisterOutput()
+GPIO.setup(pin_sr_dat, GPIO.OUT)
+GPIO.setup(pin_sr_lat, GPIO.OUT)
+
+setShiftRegister(values)
+enableShiftRegisterOutput()
 
 display = Display(uiItems)
 display.display()
