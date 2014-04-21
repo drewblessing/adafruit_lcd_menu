@@ -20,11 +20,8 @@ import atexit
 
 import smbus
 
-configfile = 'lcdmenu.xml'
-# set DEBUG=1 for print debug statements
-DEBUG = 0
-DISPLAY_ROWS = 2
-DISPLAY_COLS = 16
+# Import the sprinkler menu config file
+from config import *
 
 # set busnum param to the correct value for your pi
 lcd = Adafruit_CharLCDPlate(busnum = 1)
@@ -78,6 +75,48 @@ def DoReboot():
             commands.getoutput("sudo reboot")
             quit()
         sleep(0.25)
+
+def SprinklerAllOff():
+    values = [0]*num_stations
+    setShiftRegister(values)
+    lcd.clear()
+    lcd.message('All stations off')
+    sleep(2)
+
+def Sprinkler1On():
+    TurnStationOn(1)
+
+def Sprinkler2On():
+    TurnStationOn(2)
+
+def Sprinkler3On():
+    TurnStationOn(3)
+
+def Sprinkler4On():
+    TurnStationOn(4)
+
+def Sprinkler5On():
+    TurnStationOn(5)
+
+def Sprinkler6On():
+    TurnStationOn(6)
+
+def Sprinkler7On():
+    TurnStationOn(7)
+
+def Sprinkler8On():
+    TurnStationOn(8)
+
+def TurnStationOn(station):
+    global values
+    # Turn all stations off before turning another on
+    values = [0]*num_stations
+    # Turn desired station on
+    values[station-1] = 1
+    setShiftRegister(values)
+    lcd.clear()
+    lcd.message("Station %d on" % station)
+    sleep(2)
 
 def LcdOff():
     lcd.backlight(lcd.OFF)
@@ -552,7 +591,7 @@ if __name__ == '__main__':
 # now start things up
 uiItems = Folder('root','')
 
-dom = parse(configfile) # parse an XML file by name
+dom = parse(menufile) # parse an XML file by name
 
 top = dom.documentElement
 

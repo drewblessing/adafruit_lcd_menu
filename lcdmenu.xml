@@ -1,7 +1,7 @@
 <application>
   <settings lcdColor="Blue" lcdBacklight="On" />
   <folder text="Sprinklers">
-    <widget text="Turn All Off" function="SprinklersAllOff" />
+    <widget text="Turn All Off" function="SprinklerAllOff" />
     <widget text="Station 1 On" function="Sprinkler1On" />
     <widget text="Station 2 On" function="Sprinkler2On" />
     <widget text="Station 3 On" function="Sprinkler3On" />

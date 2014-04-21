@@ -1,0 +1,19 @@
+# GPIO PIN DEFINES
+pin_sr_clk =  4
+pin_sr_noe = 17
+pin_sr_dat = 27 # NOTE: if you have a RPi rev.1, need to change this to 21
+pin_sr_lat = 22
+
+# NUMBER OF STATIONS
+num_stations = 8
+
+# STATION BITS
+values = [0]*num_stations
+
+menufile = 'lcdmenu.xml'
+
+# set DEBUG=1 for print debug statements
+# Note: Not yet in use
+DEBUG = 0
+DISPLAY_ROWS = 2
+DISPLAY_COLS = 16
